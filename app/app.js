@@ -8,6 +8,7 @@ let secret_key = process.env.PLAID_SECRET_KEY;
 let access_token = process.env.PLAID_ACCESS_TOKEN;
 let mongo_db = process.env.MONGO_DB_CONNECT;
 
+console.log('Attempt to connect MongoDB');
 mongoose
   .connect('' + mongo_db)
   .then(() => {
