@@ -10,7 +10,7 @@ let mongo_db = process.env.MONGO_DB_CONNECT;
 
 console.log('Attempt to connect MongoDB');
 mongoose
-  .connect('' + mongo_db)
+  .connect(mongo_db)
   .then(() => {
     console.log('Connected to database successfully');
   })
