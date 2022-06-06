@@ -1,7 +1,7 @@
 const request = require('request');
 const mongoose = require('mongoose');
 
-const Transaction = require('./model/transaction');
+const Transaction = require('../models/transaction');
 
 let client_id = process.env.PLAID_CLIENT_ID;
 let secret_key = process.env.PLAID_SECRET_KEY;
