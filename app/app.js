@@ -17,6 +17,11 @@ mongoose
     console.log('Connection failed');
   });
 
+const db = mongoose.connection;
+db.once('open', () => {
+  console.log('Database connection opened');
+})
+
 var date_ob = new Date();
 var day = ('0' + date_ob.getDate()).slice(-2);
 var month = ('0' + (date_ob.getMonth() + 1)).slice(-2);
