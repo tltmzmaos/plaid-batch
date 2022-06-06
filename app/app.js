@@ -17,10 +17,7 @@ mongoose
     console.log('Connection failed');
   });
 
-const db = mongoose.connection;
-db.once('open', () => {
-  console.log('Database connection opened');
-})
+console.log('Database connection status - ' + mongoose.connection.readyState);
 
 var date_ob = new Date();
 var day = ('0' + date_ob.getDate()).slice(-2);
