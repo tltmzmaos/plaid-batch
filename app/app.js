@@ -17,6 +17,7 @@ mongoose
   .catch(() => {
     console.log('Connection failed');
   });
+console.log('Passed mongoose section');
 
 var date_ob = new Date();
 var day = ('0' + date_ob.getDate()).slice(-2);
