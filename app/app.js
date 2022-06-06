@@ -8,12 +8,10 @@ let secret_key = process.env.PLAID_SECRET_KEY;
 let access_token = process.env.PLAID_ACCESS_TOKEN;
 let mongo_db = process.env.MONGO_DB_CONNECT;
 
-console.log(mongo_db);
-
 mongoose
   .connect('' + mongo_db)
   .then(() => {
-    console.log('Connected to database');
+    console.log('Connected to database successfully');
   })
   .catch(() => {
     console.log('Connection failed');
@@ -44,8 +42,8 @@ request(options, (error, response) => {
   if (error) throw new Error(error);
   const json = JSON.parse(response.body);
   const transactions = json['transactions'];
-  //console.log(date, date, json['total_transactions']);
-  if (json['total_transactions'] === 0) process.exit(1);
+  console.log(date, date, json['total_transactions']);
+  if (json['total_transactions'] === 0) process.exit(0);
   let trans = [];
   for (let i = 0; i < transactions.length; i++) {
     trans.push(transactions[i]);
