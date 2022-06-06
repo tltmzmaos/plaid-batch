@@ -42,14 +42,19 @@ request(options, (error, response) => {
   if (error) throw new Error(error);
   const json = JSON.parse(response.body);
   const transactions = json['transactions'];
-  console.log(date, date, json['total_transactions']);
+  //console.log(date, date, json['total_transactions']);
   if (json['total_transactions'] === 0) process.exit(1);
   let trans = [];
   for (let i = 0; i < transactions.length; i++) {
     trans.push(transactions[i]);
   }
   Transaction.insertMany(trans, function (err, mongooseDocuments) {
-    console.log('Saved successfully');
-    process.exit(1);
+    if (err) {
+      console.log('Failed to save');
+      process.exit(1);
+    } else {
+      console.log('Saved successfully');
+      process.exit(0);
+    }
   });
 });
